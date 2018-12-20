@@ -37,3 +37,26 @@ dependencies {
 
 // Define the main class for the application
 mainClassName = 'fuzzy.search.App'
+
+task "fuzzy-search"(type: JavaExec) {
+    description 'Busqueda de palabra en listado de nombres'
+    main = 'fuzzy.search.App'
+    classpath = sourceSets.main.runtimeClasspath
+    args 'fuzzy', project.hasProperty('search')?project.getProperty('search'):''
+}
+
+
+task add(type: JavaExec) {
+    description 'Agregar nombre en listado'
+    main = 'fuzzy.search.App'
+    classpath = sourceSets.main.runtimeClasspath
+    
+    args 'add', project.hasProperty('userName')?project.getProperty('userName'):''
+}
+
+task list(type: JavaExec) {
+    description 'Obtener todo el listado de nombres'
+    main = 'fuzzy.search.App'
+    classpath = sourceSets.main.runtimeClasspath
+    args 'list'
+}

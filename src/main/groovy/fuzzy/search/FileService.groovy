@@ -12,8 +12,11 @@ class FileService {
   }
 
   def writeInFile(String newLine){
-    file=getFile()
+    if(newLine == null)
+      return
+    File file=getFile()
     file << "${newLine}\n"
+    file
   }
 
 }

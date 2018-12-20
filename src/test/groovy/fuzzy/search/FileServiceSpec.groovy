@@ -27,4 +27,14 @@ class FileServiceSpec extends Specification {
       result
     }
 
+    void "write in file"(){
+      given:
+      String name = "Juan Lopez"
+      when:
+      def result = service.writeInFile(name)
+      then:
+      result
+      result.readLines()[0] ==name
+    }
+
 }
