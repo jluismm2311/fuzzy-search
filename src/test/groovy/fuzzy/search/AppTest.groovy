@@ -6,14 +6,57 @@ package fuzzy.search
 import spock.lang.Specification
 
 class AppTest extends Specification {
-    def "application has a greeting"() {
-        setup:
-        def app = new App()
 
+    App app
+    FileService fileService
+
+    void setup(){
+        fileService = new FileServiceToTest()
+        app =  new App() 
+        app.fileService = fileService
+    } 
+
+    def "list user to list is empty"() {
         when:
-        def result = app.greeting
-
+        def buffer = new ByteArrayOutputStream()
+        System.out = new PrintStream(buffer)
+        and:
+        app.list()
         then:
-        result != null
+        buffer.toString() == '[]\n'
+        notThrown(Exception)
+    }
+
+    def "add empty user"() {
+        when:
+        def buffer = new ByteArrayOutputStream()
+        System.out = new PrintStream(buffer)
+        and:
+        app.add('')
+        then:
+        buffer.toString() == 'Por favor agrega un usuario.\n'
+        notThrown(Exception)
+    }
+
+    def "add user"() {
+        when:
+        def buffer = new ByteArrayOutputStream()
+        System.out = new PrintStream(buffer)
+        and:
+        app.add('Test user')
+        then:
+        buffer.toString() == 'Usuario agregado.\n'
+        notThrown(Exception)
+    }
+
+    def "search without coincidences"() {
+        when:
+        def buffer = new ByteArrayOutputStream()
+        System.out = new PrintStream(buffer)
+        and:
+        app.fuzzy('')
+        then:
+        buffer.toString() == 'Sin coincidencias.\n'
+        notThrown(Exception)
     }
 }
