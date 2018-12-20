@@ -5,7 +5,7 @@ class FileService {
   static String fileName = 'fuzzy-search.txt'
 
   def getFile(){
-    file = new File(filename)
+    File file = new File(fileName)
     if(!file.exists())
       file.createNewFile()
     file  
