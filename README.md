@@ -1,14 +1,12 @@
-<!-- Exercise for fuzzy search in groovy -->
-
 #Installation requirements
 1. Gradle 5.0
 2. Groovy 2.4.12
 
 #Commands
 ```
- gradle add -P userName="El nombre que desees agregar"
+ gradle add -Pjson='{"name":"Pepe pecas"}'
  gradle list 
- gradle fuzzy-search -P search="Stark"
+ gradle fuzzy-search -Pjson='{"search":"Juan"}'
 ```
 
 #For build and run all tests 
