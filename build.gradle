@@ -42,7 +42,7 @@ task "fuzzy-search"(type: JavaExec) {
     description 'Busqueda de palabra en listado de nombres'
     main = 'fuzzy.search.App'
     classpath = sourceSets.main.runtimeClasspath
-    args 'fuzzy', project.hasProperty('search')?project.getProperty('search'):''
+    args 'fuzzy', project.hasProperty('json')?project.getProperty('json'):''
 }
 
 
@@ -51,7 +51,7 @@ task add(type: JavaExec) {
     main = 'fuzzy.search.App'
     classpath = sourceSets.main.runtimeClasspath
     
-    args 'add', project.hasProperty('userName')?project.getProperty('userName'):''
+    args 'add', project.hasProperty('json')?project.getProperty('json'):''
 }
 
 task list(type: JavaExec) {
