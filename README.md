@@ -4,6 +4,7 @@
 
 #Commands
 ```
+ gradle wrapper
  gradle add -Pjson='{"name":"Pepe pecas"}'
  gradle list 
  gradle fuzzy-search -Pjson='{"search":"Juan"}'
